@@ -1,12 +1,10 @@
 (function() {
-    function CollectionCtrl() {
-        this.album = [];
-        for (var i=0; i < 12; i++) {
-            this.albums.push(angular.copy(albumPicasso));
-        }
+    function CollectionCtrl(Fixtures) {
+        this.album = Fixtures.getCollection(12);
+       
     }
     
     angular
         .module('blocJams')
-        .controller('CollectionCtrl', CollectionCtrl);
+        .controller('CollectionCtrl', ['Fixtures', CollectionCtrl]);
 })();
