@@ -54,6 +54,15 @@
             song.playing = true;
         };
         
+        var stopSong = function(song) {
+            if (currentBuzzObject) {
+                currentBuzzObject.stop();
+                SongPlayer.currentSong.playing = !null;
+            }
+            
+            song.playing = null;
+        };
+        
          /**
         * @desc Get the index of a song 
         * @type {Number}
@@ -109,6 +118,25 @@
         SongPlayer.previous = function() {
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex--;
+        
+            if(currentSongIndex < 0) {
+                currentBuzzObject.stop();
+                SongPlayer.currentSong.playing = null;
+            } else {
+                var song = currentAlbum.songs[currentSongIndex];
+                setSong(song);
+                playSong(song);
+            }
+        };
+        
+         /**
+        * @desc Go to the next song - get the index of the currently playing song and then increase that index by one
+        * @type {Number}
+        */
+        
+        SongPlayer.next = function() {
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            currentSongIndex++;
         
             if(currentSongIndex < 0) {
                 currentBuzzObject.stop();
