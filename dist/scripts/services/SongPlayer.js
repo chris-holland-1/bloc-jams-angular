@@ -44,12 +44,7 @@
          var playSong = function(song) {
             if (currentBuzzObject) {
                 currentBuzzObject.play();
-                SongPlayer.currentSong.playing = !null;
             }
-            currentBuzzObject = new buzz.sound(song.audioUrl, {
-                formats: ['mp3'],
-                preload: true
-            });
             
             song.playing = true;
         };
@@ -105,7 +100,9 @@
         */
         
         SongPlayer.pause = function(song) {
+            console.log("pause!");
             song = song || SongPlayer.currentSong;
+            console.log(currentBuzzObject);
             currentBuzzObject.pause();
             song.playing = false;
         };
