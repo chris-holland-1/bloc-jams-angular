@@ -22,13 +22,13 @@
                     <h2 class="song-name">{{ album.songPlayer.currentSong.title }}</h2>
                     <div class="seek-control">
                         <seek-bar value="{{ playerBar.songPlayer.currentTime }}" max="{{ playerBar.songPlayer.currentSong.duration }}" on-change="playerBar.songPlayer.setCurrentTime(value)"></seek-bar>
-                        <div class="current-time"></div>
+                        <div class="current-time">{{ album.songPlayer.currentTime }}</div>
                         <div class="total-time">{{ album.songPlayer.currentSong.duration }}</div>
                     </div>
                     <h2 class="artist-song-mobile"></h2>
                     <h3 class="artist-name">{{ album.albumData.artist }}</h3>
                 </div>
-                <div class="control-group volume">
+                <div class="control-group volume" value="{{ volume }}" max="{{ 0-100 }}" on-change="playerBar.songPlayer.setVolume(value)">
                     <span class="ion-volume-high icon"></span>
                     <seek-bar></seek-bar>
                 </div>
